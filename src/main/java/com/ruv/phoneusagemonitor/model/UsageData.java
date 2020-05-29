@@ -5,6 +5,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -13,20 +14,22 @@ public class UsageData {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	private String dateOfUsage;
 	private String startTime;
 	private String endTime;
 	private String usageReason;
 	
 	@ManyToOne
-	private User user;
+	private UserDetails user;
 
 	public UsageData() {
 		super();
 	}
 	
-	public UsageData(int id, String startTime, String endTime, String usageReason, User user) {
+	public UsageData(int id,  String dateofUsage, String startTime, String endTime, String usageReason, UserDetails user) {
 		super();
 		this.id = id;
+		this.dateOfUsage = dateofUsage;
 		this.startTime = startTime;
 		this.endTime = endTime;
 		this.usageReason = usageReason;
@@ -59,6 +62,14 @@ public class UsageData {
 
 	
 	
+	public String getDateOfUsage() {
+		return dateOfUsage;
+	}
+
+	public void setDateOfUsage(String dateOfUsage) {
+		this.dateOfUsage = dateOfUsage;
+	}
+
 	public String getUsageReason() {
 		return usageReason;
 	}
@@ -67,11 +78,11 @@ public class UsageData {
 		this.usageReason = usageReason;
 	}
 
-	public User getUser() {
+	public UserDetails getUser() {
 		return user;
 	}
 
-	public void setUser(User user) {
+	public void setUser(UserDetails user) {
 		this.user = user;
 	}
 	

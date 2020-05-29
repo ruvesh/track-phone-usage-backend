@@ -2,19 +2,18 @@ package com.ruv.phoneusagemonitor.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-
 @Entity
-public class User {
+public class UserDetails {
 
 	@Id
 	private String username;
 	private String password;
 	
-	public User() {
+	public UserDetails() {
 		super();
 	}
 	
-	public User(String username, String password) {
+	public UserDetails(String username, String password) {
 		super();
 		this.username = username;
 		this.password = password;

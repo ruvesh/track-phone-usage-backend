@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ruv.phoneusagemonitor.model.UsageData;
 
-import com.ruv.phoneusagemonitor.model.User;
+import com.ruv.phoneusagemonitor.model.UserDetails;
 import com.ruv.phoneusagemonitor.repos.UsageDataRepo;
 
 @RestController
@@ -33,14 +33,14 @@ public class UsageDataController {
 	@PostMapping("/users/{username}/usage")
 	public String addUsage(@RequestBody UsageData ud, @PathVariable String username) {
 		
-		ud.setUser(new User(username, ""));
+		ud.setUser(new UserDetails(username, ""));
 		usageDataRepo.save(ud);
 		return "{\"message\" : \"Added Successfully\" }";
 	}
 	
 	@PutMapping("/users/{username}/usage")
 	public String saveOrUpdateUsage(@PathVariable String username, @RequestBody UsageData ud) {
-		ud.setUser(new User(username, ""));
+		ud.setUser(new UserDetails(username, ""));
 		usageDataRepo.save(ud);
 		return "{\"message\" : \"Updated Successfully\" }";
 	}
