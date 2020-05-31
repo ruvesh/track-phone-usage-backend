@@ -1,7 +1,6 @@
 package com.ruv.phoneusagemonitor.controller;
 
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,11 +10,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ruv.phoneusagemonitor.model.UsageData;
-
+import com.ruv.phoneusagemonitor.model.UsageList;
 import com.ruv.phoneusagemonitor.model.UserDetails;
 import com.ruv.phoneusagemonitor.repos.UsageDataRepo;
 
@@ -23,11 +21,25 @@ import com.ruv.phoneusagemonitor.repos.UsageDataRepo;
 public class UsageDataController {
 
 	@Autowired
+	UsageList ul;
+	
+	@Autowired
 	UsageDataRepo usageDataRepo;
 	
 	@GetMapping("/users/{username}/usage")
-	public List<UsageData> usageUser(@PathVariable String username) {
-		return usageDataRepo.findUsageDataByUserUsername(username);
+	public UsageList usageUser(@PathVariable String username) {
+		
+		ul.setUsageList(usageDataRepo.findUsageDataByUserUsername(username));
+		return ul;
+		
+	}
+	
+	@GetMapping("/users/usage")
+	public UsageList usage() {
+		
+		ul.setUsageList(usageDataRepo.findAll());
+		return ul;
+		
 	}
 	
 	@PostMapping("/users/{username}/usage")

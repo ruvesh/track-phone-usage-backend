@@ -1,11 +1,13 @@
 package com.ruv.phoneusagemonitor.repos;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+
+import java.util.List;
+
+import org.springframework.data.repository.CrudRepository;
 
 import com.ruv.phoneusagemonitor.model.UserDetails;
 
-@RepositoryRestResource(collectionResourceRel = "users", path= "users")
-public interface UserRepo extends JpaRepository<UserDetails, String> {
+public interface UserRepo extends CrudRepository<UserDetails, String> {
 
+	public List<UserDetails> findAll();
 }
