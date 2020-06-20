@@ -33,9 +33,9 @@ public class UserDataController {
 	}
 	
 	@PostMapping("users")
-	public String saveUser(@RequestBody UserDetails userDetails) {
+	public Optional<UserDetails> saveUser(@RequestBody UserDetails userDetails) {
 		userRepo.save(userDetails);
-		return "{\"message\": \"Added Successfully\"}";
+		return userRepo.findById(userDetails.getUsername());
 	}
 	
 	@PutMapping("users")
@@ -54,4 +54,5 @@ public class UserDataController {
 	public Optional<UserDetails> getUser(@PathVariable String username) {
 		return userRepo.findById(username);
 	}
+
 }
