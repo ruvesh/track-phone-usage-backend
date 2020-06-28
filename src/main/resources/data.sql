@@ -1,0 +1,5 @@
+INSERT INTO USER_DETAILS (username, password) values ('user-1', 'test123')
+INSERT INTO USER_DETAILS (username, password) values ('user-2', 'test123')
+INSERT INTO USAGE_DATA (id, date_of_usage, start_time, end_time, usage_reason, user_username) values (1, '28-07-2020', '14:02', '15:02', 'initial data insert 1', 'user-1')
+INSERT INTO USAGE_DATA (id, date_of_usage, start_time, end_time, usage_reason, user_username) values (2, '28-07-2020', '15:02', '18:02', 'initial data insert 2', 'user-1')
+INSERT INTO USAGE_DATA (id, date_of_usage, start_time, end_time, usage_reason, user_username) values (3, '28-07-2020', '11:02', '13:02', 'initial data insert 3', 'user-2')
