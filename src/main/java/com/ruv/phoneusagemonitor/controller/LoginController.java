@@ -33,14 +33,17 @@ public class LoginController {
             authToken.setUsername(userDetails.get().getUsername());
             if(userDetails.get().fetchPass().equals(requesterUser.fetchPass())){
                 authToken.setAuthMessage("Access Granted");
+                authToken.setAuthCode(200);
             }
             else {
                 authToken.setAuthMessage("Access Denied");
+                authToken.setAuthCode(403);
             }
         }
         else{
             authToken.setUsername(requesterUser.getUsername());
             authToken.setAuthMessage("No such user found, Please register");
+            authToken.setAuthCode(404);
         }
         
         return authToken;
